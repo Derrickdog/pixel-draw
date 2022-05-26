@@ -1,2 +1,2 @@
-# pixel-draw
+# pixel-paint
 Pixel Drawing Webpage
