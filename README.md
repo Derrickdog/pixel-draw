@@ -1,2 +1,2 @@
 # pixel-paint
-Pixel Drawing Webpage
+https://derrickdog.github.io/pixel-paint/
