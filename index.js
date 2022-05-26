@@ -4,7 +4,6 @@ const DEFAULT_COLOR = 'black';
 let currentColor = DEFAULT_COLOR;
 
 const grid = document.querySelector('#grid');
-createGrid(DEFAULT_SIZE);
 
 // COLOR EVENT LISTENERS
 document.querySelector('#black').addEventListener('click', () => {
@@ -44,9 +43,11 @@ document.querySelector('#eraser').addEventListener('click', () => {
 });
 document.querySelector('#clear').addEventListener('click', () => {
     clearGrid();
-    createGrid(16);
+    currentColor = DEFAULT_COLOR;
+    createGrid(DEFAULT_SIZE);
 });
 
+// FUNCTIONS
 function clearGrid(){
     grid.innerHTML = '';
 }
@@ -63,18 +64,18 @@ function createGrid(size){
 }
 
 function drawPixel(e){
-    if(currentColor == 'black')
-        e.target.style.backgroundColor = 'black';
-    else if(currentColor == 'blue')
-        e.target.style.backgroundColor = 'blue';
-    else if(currentColor == 'red')
-        e.target.style.backgroundColor = 'red';
-    else if(currentColor == 'white')
-        e.target.style.backgroundColor = 'white';
-    else{
+    if(currentColor == 'rainbow'){
         const randomR = Math.floor(Math.random() * 256);
         const randomG = Math.floor(Math.random() * 256);
         const randomB = Math.floor(Math.random() * 256);
         e.target.style.backgroundColor = `rgb(${randomR}, ${randomG}, ${randomB})`;
     }
+    else{
+        e.target.style.backgroundColor = currentColor;
+    }
+}
+
+// LOAD
+window.onload = () => {
+    createGrid(DEFAULT_SIZE);
 }
