@@ -1,8 +1,12 @@
-let currentColor = 'black';
-let currentSize = 16;
+const DEFAULT_SIZE = 16;
+const DEFAULT_COLOR = 'black';
 
+let currentColor = DEFAULT_COLOR;
 const grid = document.querySelector('#grid');
 
+createGrid(DEFAULT_SIZE);
+
+// COLOR EVENT LISTENERS
 document.querySelector('#black').addEventListener('click', () => {
     currentColor = 'black';
 });
@@ -16,7 +20,27 @@ document.querySelector('#rainbow').addEventListener('click', () => {
     currentColor = 'rainbow';
 });
 
-createGrid(currentSize);
+// SIZE EVENT LISTENERS
+document.querySelector('#btn1').addEventListener('click', () => {
+    clearGrid();
+    createGrid(8);
+});
+document.querySelector('#btn2').addEventListener('click', () => {
+    clearGrid();
+    createGrid(16);
+});
+document.querySelector('#btn3').addEventListener('click', () => {
+    clearGrid();
+    createGrid(32);
+});
+document.querySelector('#btn4').addEventListener('click', () => {
+    clearGrid();
+    createGrid(64);
+});
+
+function clearGrid(){
+    grid.innerHTML = '';
+}
 
 function createGrid(size){
     grid.style.gridTemplateColumns = `repeat(${size}, 1fr)`;
