@@ -2,8 +2,8 @@ const DEFAULT_SIZE = 16;
 const DEFAULT_COLOR = 'black';
 
 let currentColor = DEFAULT_COLOR;
-const grid = document.querySelector('#grid');
 
+const grid = document.querySelector('#grid');
 createGrid(DEFAULT_SIZE);
 
 // COLOR EVENT LISTENERS
@@ -38,6 +38,15 @@ document.querySelector('#btn4').addEventListener('click', () => {
     createGrid(64);
 });
 
+// CLEAR BUTTONS
+document.querySelector('#eraser').addEventListener('click', () => {
+    currentColor = 'white';
+});
+document.querySelector('#clear').addEventListener('click', () => {
+    clearGrid();
+    createGrid(16);
+});
+
 function clearGrid(){
     grid.innerHTML = '';
 }
@@ -60,6 +69,8 @@ function drawPixel(e){
         e.target.style.backgroundColor = 'blue';
     else if(currentColor == 'red')
         e.target.style.backgroundColor = 'red';
+    else if(currentColor == 'white')
+        e.target.style.backgroundColor = 'white';
     else{
         const randomR = Math.floor(Math.random() * 256);
         const randomG = Math.floor(Math.random() * 256);
